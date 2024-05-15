@@ -37,9 +37,9 @@ public class Api_libro {
                 String titulo = bookInfo.has("title") ? bookInfo.getString("title") : "Título no disponible";
                 String imagen = bookInfo.has("cover") ? bookInfo.getJSONObject("cover").getString("medium") : "Imagen no disponible";
                 String autor = bookInfo.has("authors") ? bookInfo.getJSONArray("authors").getJSONObject(0).getString("name") : "Autor no disponible";
-
+                String urlLectura = bookInfo.has("read_url") ? bookInfo.getString("read_url") : null;
                 // Crear y devolver un objeto Libro con la información obtenida
-                return new Libro(titulo, autor, imagen);
+                return new Libro(titulo, autor, imagen, urlLectura);
 
             } else {
                 System.out.println("GET request not worked");
@@ -54,7 +54,7 @@ public class Api_libro {
             }
         }
 
-        return new Libro("none", "none", "none");
+        return new Libro("none", "none", "none","none");
     }
     // Método para obtener una lista de libros basada en un término de búsqueda
     public static List<Libro> buscarLibros(String terminoBusqueda) {

@@ -1,8 +1,12 @@
 package com.triana.libreria_;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -26,6 +30,15 @@ public class MainActivity extends AppCompatActivity {
 
         // Iniciar la tarea asíncrona para buscar libros
         new BuscarLibrosTask().execute("muerte");
+        // En el método onCreate o después de inicializar tu ListView
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Libro libroSeleccionado = listaLibros.get(position);
+            Intent intent = new Intent(MainActivity.this, ver_libro.class);
+            intent.putExtra("libro", libroSeleccionado); // Asegúrate de que Libro implemente Serializable
+            startActivity(intent);
+        });
+
+
     }
 
     // Clase interna para la tarea asíncrona
@@ -46,5 +59,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 }
 
