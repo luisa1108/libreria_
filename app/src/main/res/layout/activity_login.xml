@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -16,26 +15,29 @@
         android:textSize="18sp" />
 
     <EditText
+        android:text="user"
         android:id="@+id/editTextUsername"
         android:layout_width="match_parent"
+        android:padding="14dp"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:padding="8dp" />
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/textViewPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Contraseña"
+        android:padding="14dp"
         android:textColor="@color/primario"
         android:textSize="18sp" />
 
     <EditText
+        android:text="password"
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
-        android:padding="8dp" />
+        android:padding="14dp" />
 
     <Button
         android:id="@+id/buttonLogin"
@@ -43,6 +45,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
         android:text="Login"
+        android:padding="14dp"
         android:textColor="@color/white"
         android:textSize="18sp" />
 
