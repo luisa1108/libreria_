@@ -4,39 +4,48 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.content.Intent; // Importa la clase Intent
+import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Login extends AppCompatActivity {
-    private EditText editTextUsername, editTextPassword;
-    private Button buttonLogin;
+
+    private EditText username;
+    private EditText password;
+    private Button loginButton;
+    private Button registerButton;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login); // Asegúrate de que este sea el layout correcto para el login
+        setContentView(R.layout.activity_login);
 
-        editTextUsername = findViewById(R.id.editTextUsername);
-        editTextPassword = findViewById(R.id.editTextPassword);
-        buttonLogin = findViewById(R.id.buttonLogin);
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        loginButton = findViewById(R.id.login_button);
+        registerButton = findViewById(R.id.register_button);
 
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = editTextUsername.getText().toString();
-                String password = editTextPassword.getText().toString();
+            }
 
-                if(username.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(Login.this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
-                } else {
-                    // Aquí tu lógica de inicio de sesión
-                    Toast.makeText(Login.this, "¡Inicio de sesión exitoso!", Toast.LENGTH_SHORT).show();
+            if(username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(Login.this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
+            } else {
 
-                    // Inicia MainActivity
-                    Intent intent = new Intent(Login.this, MainActivity.class);
-                    startActivity(intent);
-                }
+                Toast.makeText(Login.this, "¡Inicio de sesión exitoso!", Toast.LENGTH_SHORT).show();
+
+                // Inicia MainActivity
+                Intent intent = new Intent(Login.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }

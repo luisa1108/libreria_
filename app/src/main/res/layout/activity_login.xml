@@ -4,49 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
-
-    <TextView
-        android:id="@+id/textViewUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Usuario"
-        android:textColor="@color/primario"
-        android:textSize="18sp" />
+    android:gravity="center">
 
     <EditText
-        android:text="user"
-        android:id="@+id/editTextUsername"
+        android:id="@+id/username"
         android:layout_width="match_parent"
-        android:padding="14dp"
         android:layout_height="wrap_content"
+        android:hint="Usuario"
         android:inputType="text" />
 
-    <TextView
-        android:id="@+id/textViewPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Contraseña"
-        android:padding="14dp"
-        android:textColor="@color/primario"
-        android:textSize="18sp" />
-
     <EditText
-        android:text="password"
-        android:id="@+id/editTextPassword"
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:padding="14dp" />
+        android:hint="Contraseña"
+        android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
-        android:text="Login"
-        android:padding="14dp"
-        android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:text="Iniciar sesión" />
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrarse" />
 
 </LinearLayout>
