@@ -1,4 +1,5 @@
 package com.triana.libreria_;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -44,7 +45,7 @@ public class Login extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login.this, RegisterActivity.class);
+                Intent intent = new Intent(Login.this, Registro.class);
                 startActivity(intent);
             }
         });
