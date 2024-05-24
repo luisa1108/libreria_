@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ public class Login extends AppCompatActivity {
     private EditText password;
     private Button loginButton;
     private Button registerButton;
+    private TextView signupTextView;
 
     // Referencia a FirebaseAuth
     private FirebaseAuth mAuth;
@@ -32,6 +34,8 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.password);
         loginButton = findViewById(R.id.login_button);
         registerButton = findViewById(R.id.register_button);
+        signupTextView = findViewById(R.id.signupTextView);
+
 
         // Inicializa FirebaseAuth
         mAuth = FirebaseAuth.getInstance();
