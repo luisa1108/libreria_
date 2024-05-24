@@ -31,5 +31,14 @@ public class Registro extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+          signupTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inicia la actividad de registro
+                Intent intent = new Intent(Registro.this, Login.class);
+                startActivity(intent);
+            }
+        });
     }
 }
