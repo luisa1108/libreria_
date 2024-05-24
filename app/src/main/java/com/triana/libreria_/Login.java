@@ -6,7 +6,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.content.Intent;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
 
@@ -14,6 +19,9 @@ public class Login extends AppCompatActivity {
     private EditText password;
     private Button loginButton;
     private Button registerButton;
+
+    // Referencia a FirebaseAuth
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,20 +33,34 @@ public class Login extends AppCompatActivity {
         loginButton = findViewById(R.id.login_button);
         registerButton = findViewById(R.id.register_button);
 
+        // Inicializa FirebaseAuth
+        mAuth = FirebaseAuth.getInstance();
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            }
+                String email = username.getText().toString();
+                String document = password.getText().toString();
 
-            if(username.isEmpty() || password.isEmpty()) {
-                Toast.makeText(Login.this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
-            } else {
-
-                Toast.makeText(Login.this, "¡Inicio de sesión exitoso!", Toast.LENGTH_SHORT).show();
-
-                // Inicia MainActivity
-                Intent intent = new Intent(Login.this, MainActivity.class);
-                startActivity(intent);
+                if(email.isEmpty() || document.isEmpty()) {
+                    Toast.makeText(Login.this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
+                } else {
+                    mAuth.signInWithEmailAndPassword(email, document)
+                            .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // Inicio de sesión exitoso
+                                        Toast.makeText(Login.this, "¡Inicio de sesión exitoso!", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(Login.this, MainActivity.class);
+                                        startActivity(intent);
+                                    } else {
+                                        // Error en el inicio de sesión
+                                        Toast.makeText(Login.this, "Error en el inicio de sesión", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                }
             }
         });
 
@@ -51,4 +73,3 @@ public class Login extends AppCompatActivity {
         });
     }
 }
-
