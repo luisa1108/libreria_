@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/terciario_claro">
+    android:background="@color/primario_claro">
 
     <EditText
         android:id="@+id/name"
@@ -45,7 +45,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:text="¿Ya tienes una cuenta? Inicia sesión"
-        android:textColor="#0000FF"
+        android:textColor="@color/terciario"
         android:textSize="16sp" />
 
 </LinearLayout>

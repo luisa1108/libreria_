@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/primario_claro">
 
     <TextView
         android:id="@+id/tituloTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
         android:text="Título del Libro"
+        android:textAlignment="center"
+        android:textColor="@color/secundario"
         android:textSize="24sp" />
 
     <TextView
         android:id="@+id/autorTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Autor del Libro"
         android:layout_below="@id/tituloTextView"
+        android:layout_marginTop="4dp"
+        android:text="Autor del Libro"
+        android:textAlignment="center"
+        android:textColor="@color/primario"
         android:textSize="18sp" />
 
     <ImageView
