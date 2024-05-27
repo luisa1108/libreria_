@@ -9,10 +9,11 @@ import android.widget.Toast;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
 
@@ -21,9 +22,6 @@ public class Login extends AppCompatActivity {
     private Button loginButton;
     private Button registerButton;
     private TextView signupTextView;
-
-    // Referencia a FirebaseAuth
-    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,34 +34,45 @@ public class Login extends AppCompatActivity {
         registerButton = findViewById(R.id.register_button);
         signupTextView = findViewById(R.id.signupTextView);
 
-
-        // Inicializa FirebaseAuth
-        mAuth = FirebaseAuth.getInstance();
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = username.getText().toString();
-                String document = password.getText().toString();
+                String userPassword = password.getText().toString();
 
-                if(email.isEmpty() || document.isEmpty()) {
+                if(email.isEmpty() || userPassword.isEmpty()) {
                     Toast.makeText(Login.this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
                 } else {
-                    mAuth.signInWithEmailAndPassword(email, document)
-                            .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("clientes");
+                    ref.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()) {
+                                // El usuario existe, ahora verificamos el documento
+                                for (DataSnapshot userSnapshot: dataSnapshot.getChildren()) {
+                                    String document = userSnapshot.child("document").getValue(String.class);
+                                    if (document.equals(userPassword)) {
                                         // Inicio de sesión exitoso
                                         Toast.makeText(Login.this, "¡Inicio de sesión exitoso!", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(Login.this, MainActivity.class);
                                         startActivity(intent);
-                                    } else {
-                                        // Error en el inicio de sesión
-                                        Toast.makeText(Login.this, "Error en el inicio de sesión", Toast.LENGTH_SHORT).show();
+                                        return;
                                     }
                                 }
-                            });
+                                // El documento no coincide
+                                Toast.makeText(Login.this, "Error en el documento", Toast.LENGTH_SHORT).show();
+                            } else {
+                                // El usuario no existe
+                                Toast.makeText(Login.this, "Error en el usario", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            // Error en la consulta a la base de datos
+                            Toast.makeText(Login.this, "Error en la consulta a la base de datos", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
         });
@@ -76,7 +85,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-         signupTextView.setOnClickListener(new View.OnClickListener() {
+        signupTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Inicia la actividad de registro
@@ -86,3 +95,4 @@ public class Login extends AppCompatActivity {
         });
     }
 }
+

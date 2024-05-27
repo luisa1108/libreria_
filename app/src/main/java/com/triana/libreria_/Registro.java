@@ -19,6 +19,7 @@ public class Registro extends AppCompatActivity {
     private EditText document;
     private EditText email;
     private Button registerButton;
+    private Button signupTextView;
 
     // Referencia a la base de datos de Firebase
     private DatabaseReference mDatabase;
@@ -32,6 +33,7 @@ public class Registro extends AppCompatActivity {
         document = findViewById(R.id.document);
         email = findViewById(R.id.email);
         registerButton = findViewById(R.id.register_button);
+        signupTextView = findViewById(R.id.signupTextView);
 
         // Inicializa la referencia a la base de datos de Firebase
         mDatabase = FirebaseDatabase.getInstance().getReference();

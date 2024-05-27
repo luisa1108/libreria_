@@ -10,6 +10,7 @@
     <EditText
         android:id="@+id/username"
         android:layout_width="220dp"
+        android:padding="14dp"
         android:layout_height="wrap_content"
         android:hint="Usuario"
         android:inputType="text" />
@@ -19,6 +20,7 @@
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:hint="Contraseña"
+        android:padding="14dp"
         android:inputType="textPassword" />
 
     <Button
