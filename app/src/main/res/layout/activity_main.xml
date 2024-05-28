@@ -4,19 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
+    android:background="@color/primario_claro"
     tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Biblio Tech"
+        android:textSize="32sp"
+        android:textColor="@color/secundario"
+        android:fontFamily="sans-serif-light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"/>
 
     <EditText
         android:id="@+id/search_box"
         android:layout_width="0dp"
+        android:padding="13dp"
         android:layout_height="wrap_content"
         android:hint="Buscar..."
+        android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_name"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"/>
 
     <ListView
         android:id="@+id/lista_libros"
@@ -27,10 +43,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:textColorHint="@color/black"
-        android:background="@android:color/transparent"/>
+        android:textColorHint="@color/black"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 

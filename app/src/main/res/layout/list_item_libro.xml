@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/imagen_libro"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@mipmap/ic_launcher" />
 
         <LinearLayout
@@ -45,3 +45,4 @@
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
+
