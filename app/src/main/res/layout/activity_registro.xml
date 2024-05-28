@@ -7,6 +7,12 @@
     android:gravity="center"
     android:background="@color/primario_claro">
 
+    <ImageView
+        android:layout_width="63dp"
+        android:layout_height="47dp"
+        android:src="@drawable/person"
+        android:tint="@color/primario" />
+
     <EditText
         android:id="@+id/name"
         android:layout_width="220dp"
