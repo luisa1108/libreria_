@@ -13,6 +13,7 @@
         android:padding="14dp"
         android:layout_height="wrap_content"
         android:hint="Usuario"
+        android:textColorHint="@color/black"
         android:inputType="text" />
 
     <EditText
@@ -21,6 +22,7 @@
         android:layout_height="wrap_content"
         android:hint="Contraseña"
         android:padding="14dp"
+        android:textColorHint="@color/black"
         android:inputType="textPassword" />
 
     <Button
@@ -28,6 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/primario"
+        android:textColor="@color/white"
         android:text="Iniciar sesión" />
 
     <Button
@@ -35,6 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/primario"
+        android:textColor="@color/white"
         android:text="Registrarse" />
 
     <TextView
