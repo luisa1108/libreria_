@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +20,7 @@ public class Registro extends AppCompatActivity {
     private EditText document;
     private EditText email;
     private Button registerButton;
-    private Button signupTextView;
+    private TextView signupTextView;
 
     // Referencia a la base de datos de Firebase
     private DatabaseReference mDatabase;
@@ -65,8 +66,7 @@ public class Registro extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-          signupTextView.setOnClickListener(new View.OnClickListener() {
+        signupTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Inicia la actividad de registro
